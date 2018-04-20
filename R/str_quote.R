@@ -1,7 +1,7 @@
 #' Surround strings with quotation marks
 #'
 #' @param x character vector
-#' @param ch character representing a quotation mark (default is `"`)
+#' @param ch character representing a quotation mark (default is double quote)
 #'
 #' @examples
 #' str_quote(LETTERS)
