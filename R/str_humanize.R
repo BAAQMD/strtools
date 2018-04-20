@@ -58,11 +58,11 @@ str_humanize.numeric <- function (x, digits = NULL, tiny = NULL, zero = NULL, ..
   is_zero <- function (x) (x == 0)
 
   if (!is.null(tiny)) {
-    formatted <- replace_which(formatted, is_tiny(x), tiny)
+    formatted <- replace(formatted, is_tiny(x), tiny)
   }
 
   if (!is.null(zero)) {
-    formatted <- replace_which(formatted, is_zero(x), zero)
+    formatted <- replace(formatted, is_zero(x), zero)
   }
 
   return(formatted)
