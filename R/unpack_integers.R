@@ -1,9 +1,9 @@
 #' Unpack a vector of "packed integers" (like facility IDs or category IDs)
 #'
 #' @examples
-#' input_data <- data_frame(cat_ids = c("c(1, 3)", "c(1:4)"))
-#' unpack_integers(input_data, var_name = "cat_ids")
-#' unpack_integers(input_data)
+#' df <- data_frame(cat_ids = c("c(1, 3)", "c(1:4)"))
+#' unpack_integers(df, var_name = "cat_ids")
+#' unpack_integers(df)
 #'
 #' @export
 unpack_integers <- function (input_data, var_name, ..., verbose = getOption("verbose"))  {

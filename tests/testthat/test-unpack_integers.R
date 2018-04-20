@@ -1,15 +1,10 @@
 context("unpack_integers")
 
-library(dplyr)
-library(purrr)
+test_that("cat_ids", {
 
-input_data <- data_frame(cat_id = c("c(1, 3)", "c(1:4)"))
-expected <- data_frame(cat_id = as.integer(c(1, 3, 1:4)))
+  df <- data_frame(cat_ids = c("c(1, 3)", "c(1:4)"))
+  expected <- data_frame(cat_ids = as.integer(c(1, 3, 1, 2, 3, 4)))
 
-test_that("explicit var_name", {
-
-  expect_identical(
-    unpack_integers(input_data, var_name = "cat_id"),
-    expected)
+  expect_identical(unpack_integers(df, var_name = "cat_ids"), expected)
 
 })
