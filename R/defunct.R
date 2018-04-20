@@ -95,3 +95,52 @@ format_each <- function (input_data, ..., digits) {
 
 }
 
+#' @export
+dput_ranges <- function (x) {
+
+  .Deprecated(
+    "dput_ranges",
+    msg = "`dput_ranges()` is deprecated. Please consider modifying your code to use `pack_integers()` instead.")
+
+  x <- sort(unique(x))
+
+  edges <- which(diff(x) > 1)
+  ends <- union(edges, length(x))
+  starts <- union(1, edges + 1)
+
+  paste_range <- function (a, b) if (a == b) a else paste(a, b, sep = ":")
+
+  mapply(paste_range, x[starts], x[ends]) %>% paste(collapse = ", ")
+
+}
+
+#' Scientific format (Unicode)
+#'
+#' @examples
+#' format_scientific(1.23e-5, digits = 3)
+#' format_scientific(11, digits = 2)
+#' format_scientific(9.0, digits = 2)
+#'
+#' @export
+format_scientific <- function (x, ...) {
+  .Defunct()
+  UseMethod("format_scientific")
+}
+
+#' @export
+format_scientific.default <- function (x, digits = getOption("digits"), ...) {
+  formatC(x, format = "e", digits = digits, ...) %>% sci_format
+}
+
+#' @export
+format_scientific.character <- function (x, ...) {
+  SUPERSCRIPT_NUMERALS <- c(
+    "\U2070", "\U00B9", "\U00B2", "\U00B3",
+    "\U2074", "\U2075", "\U2076", "\U2077", "\U2078", "\U2079")
+  parts <- str_match_all(x, "([^e]+)e([+-])([0-9]+)")
+  num <- sapply(parts, function (x) x[[2]])
+  exp_sgn <- sapply(parts, function (x) ifelse(x[[3]] == "-", "\U207B", ""))
+  exp_num <- sapply(parts, function (x) SUPERSCRIPT_NUMERALS[[as.integer(x[[4]]) + 1]])
+  paste(num, "\U00D7", "10", exp_sgn, exp_num, sep = "")
+}
+
