@@ -5,9 +5,15 @@ Version: 0.3
 Author: David Holstius
 Maintainer: David Holstius <dholstius@baaqmd.gov>
 Description: Provides `parse_xxx`, `format_xxx`, and `str_xxx` helper functions.
-Depends: stringr, readr, tidyverse
-Reverse-Depends: tbltools, DataBank, inventory
-License: What license is it under?
+Depends: 
+  stringr, 
+  readr, 
+  tidyverse
+Reverse-Depends: 
+  tbltools, 
+  DataBank, 
+  inventory
+License: MITE
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 6.0.1
