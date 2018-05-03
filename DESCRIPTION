@@ -1,7 +1,7 @@
 Package: strtools
 Type: Package
 Title: Parse, Format, and Manipulate Strings
-Version: 0.3
+Version: 0.3.1
 Author: David Holstius
 Maintainer: David Holstius <dholstius@baaqmd.gov>
 Description: Provides `parse_xxx`, `format_xxx`, and `str_xxx` helper functions.
