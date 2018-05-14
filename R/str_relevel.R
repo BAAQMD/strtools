@@ -9,7 +9,7 @@
 #' str_relevel(LETTERS, "J")
 #' str_relevel(LETTERS, "foo")
 #'
-#'  @export
+#' @export
 str_relevel <- function (x, what) {
   i <- first(match(what, x))
   if (is.na(i)) stop(str_c("no elements are equal to '", what, "'"))

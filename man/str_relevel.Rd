@@ -18,5 +18,4 @@ Move the first occurrence of a value to the first position.
 str_relevel(LETTERS, "J")
 str_relevel(LETTERS, "foo")
 
- @export
 }
