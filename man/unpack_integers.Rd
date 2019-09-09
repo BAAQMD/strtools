@@ -4,7 +4,8 @@
 \alias{unpack_integers}
 \title{Unpack a vector of "packed integers" (like facility IDs or category IDs)}
 \usage{
-unpack_integers(input_data, var_name, ..., verbose = getOption("verbose"))
+unpack_integers(input_data, var_name, ...,
+  verbose = getOption("verbose"))
 }
 \description{
 Unpack a vector of "packed integers" (like facility IDs or category IDs)
