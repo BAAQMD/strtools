@@ -11,8 +11,8 @@ str_humanize(x, ...)
 
 \method{str_humanize}{integer}(x, ...)
 
-\method{str_humanize}{numeric}(x, digits = NULL, tiny = NULL, zero = NULL,
-  ...)
+\method{str_humanize}{numeric}(x, digits = NULL, tiny = NULL,
+  zero = NULL, ...)
 
 \method{str_humanize}{tbl_df}(x, ...)
 }
