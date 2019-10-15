@@ -1,7 +1,7 @@
 Package: strtools
 Type: Package
 Title: Parse, Format, and Manipulate Strings
-Version: 2019.09.09
+Version: 2019.10.15
 Author: David Holstius
 Maintainer: David Holstius <dholstius@baaqmd.gov>
 Description: Provides `parse_xxx`, `format_xxx`, and `str_xxx` helper functions.
@@ -11,7 +11,6 @@ Depends:
   tidyverse
 Reverse-Depends: 
   tbltools, 
-  packtools,
   DataBank, 
   inventory
 Suggests: 
@@ -19,6 +18,6 @@ Suggests:
 License: MIT
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 6.1.1
+RoxygenNote: 6.1.0
 Roxygen: list(markdown = TRUE)
 VignetteBuilder: knitr
