@@ -1,24 +1,17 @@
 #' str_datestamp
 #'
-#' Output a datestamp.
-#'
-#' @param format defaults to `YYYY-mm-dd` (ISO 9601).
-#' @param date defaults to [`Sys.Date()`].
-#' @param ... passed to `format()`.
+#' @rdname str_date
 #'
 #' @export
 str_datestamp <- function (
-  format = "%Y-%m-%d",
+  format = "%Y%m%d",
   date = Sys.Date(),
   ...
 ) {
 
-  datestamp <-
-    format(
-      date,
-      format,
-      ...)
-
-  return(datestamp)
+  str_date(
+    format = format,
+    date = date,
+    ...)
 
 }
