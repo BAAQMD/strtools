@@ -1,10 +1,10 @@
 #' format_percent_change
 #'
-#' Format a relative change.
+#' Format a relative change as plus/minus percentages (0 means no change).
 #'
 #' @param x numeric
 #' @param na value to use if `x` is `NA`; defaults to an empty string
-#' @param zero value to use if `x` is unity; defaults to "0%" (unsigned, no digits).
+#' @param zero value to use if `x` is unity; defaults to zero percent (unsigned, no digits).
 #'
 #' @export
 format_percent_change <- function (

@@ -11,8 +11,8 @@ format_percent_change(x, digits = 0, na = "", zero = "0\%")
 
 \item{na}{value to use if \code{x} is \code{NA}; defaults to an empty string}
 
-\item{zero}{value to use if \code{x} is unity; defaults to "0%" (unsigned, no digits).}
+\item{zero}{value to use if \code{x} is unity; defaults to zero percent (unsigned, no digits).}
 }
 \description{
-Format a relative change.
+Format a relative change as plus/minus percentages (0 means no change).
 }
