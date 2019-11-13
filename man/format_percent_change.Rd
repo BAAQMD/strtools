@@ -14,5 +14,5 @@ format_percent_change(x, digits = 0, na = "", zero = "0\%")
 \item{zero}{value to use if \code{x} is unity; defaults to "0%" (unsigned, no digits).}
 }
 \description{
-Format a relative change.
+Format a relative change as plus/minus percentages (0 means no change).
 }
