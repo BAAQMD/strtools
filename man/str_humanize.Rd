@@ -11,23 +11,20 @@ str_humanize(x, ...)
 
 \method{str_humanize}{integer}(x, ...)
 
-\method{str_humanize}{numeric}(x, digits = NULL, tiny = NULL,
-  zero = NULL, ...)
+\method{str_humanize}{numeric}(x, digits = NULL, tiny = NULL, zero = NULL, ...)
 
 \method{str_humanize}{tbl_df}(x, ...)
 }
 \arguments{
 \item{x}{an integer or numeric vector, or a \code{\link[dplyr]{tbl}}}
 
-\item{\dots}{(optional)}
+\item{\dots}{(unused)}
 
 \item{digits}{number of digits to retain}
 
 \item{tiny}{what to print in place of tiny values (that round to zero, given the number of digits you've specified)}
 
 \item{zero}{what to print in place of actual zeros (that are EXACTLY zero)}
-
-\item{\dots}{(unused)}
 }
 \description{
 Improve readability for humans

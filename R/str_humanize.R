@@ -16,6 +16,7 @@
 #'
 #' @export
 str_humanize <- function (x, ...) {
+  warning("str_humanize() needs more test coverage. Don't use in production!")
   UseMethod("str_humanize")
 }
 
