@@ -4,7 +4,7 @@
 \alias{format_SI}
 \title{Format according to SI conventions}
 \usage{
-format_SI(x, ...)
+format_SI(x, fixed = FALSE, ...)
 }
 \arguments{
 \item{x}{(numeric)}
@@ -18,6 +18,8 @@ Format according to SI conventions
 format_SI(1)
 format_SI(9:11)
 format_SI(c(33, 333, 3333, 33333333))
+format_SI(seq(0, 1.2, len = 7) * 1000)
+format_SI(seq(0, 1.2, len = 7) * 1000, fixed = TRUE)
 
 }
 \seealso{
