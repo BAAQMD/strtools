@@ -8,7 +8,7 @@
 format_qty <- function (
   x,
   digits = NULL,
-  # fixed = TRUE,
+  fixed = TRUE,
   engineering = TRUE,
   ...,
   verbose = getOption("verbose")

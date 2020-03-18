@@ -4,12 +4,24 @@
 \alias{format_SI}
 \title{Format according to SI conventions}
 \usage{
-format_SI(x, digits = 2, fixed = FALSE, engineering = FALSE, ...)
+format_SI(
+  x,
+  signif = 3,
+  digits = NULL,
+  fixed = FALSE,
+  engineering = FALSE,
+  trim = TRUE,
+  nsmall = 0L,
+  ...,
+  verbose = getOption("verbose")
+)
 }
 \arguments{
 \item{x}{(numeric)}
 
-\item{...}{further arguments to \link[base:format]{format}}
+\item{trim}{(logical) passed to \link[base:format]{format()}}
+
+\item{...}{further arguments to \link[base:format]{format()}}
 }
 \description{
 Format according to SI conventions
