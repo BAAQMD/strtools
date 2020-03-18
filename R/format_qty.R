@@ -6,17 +6,28 @@
 #'
 #' @export
 format_qty <- function (
-  ...,
-  fixed = TRUE,
+  x,
+  digits = NULL,
+  # fixed = TRUE,
   engineering = TRUE,
+  ...,
   verbose = getOption("verbose")
 ) {
 
+  if (is.null(digits)) {
+    fixed <- TRUE
+  } else {
+    fixed <- FALSE
+  }
+
   formatted <-
     format_SI(
-      ...,
+      x,
+      digits = digits,
       fixed = fixed,
-      engineering = engineering)
+      engineering = engineering,
+      ...,
+      verbose = verbose)
 
   return(formatted)
 

@@ -1,7 +1,8 @@
 #' Format according to SI conventions
 #'
 #' @param x (numeric)
-#' @param ... further arguments to [format][base::format]
+#' @param trim (logical) passed to [format()][base::format()]
+#' @param ... further arguments to [format()][base::format()]
 #'
 #' @examples
 #' format_SI(1)
@@ -40,11 +41,17 @@
 #' @export
 format_SI <- function (
   x,
-  digits = 2,
+  signif = 3,
+  digits = NULL,
   fixed = FALSE,
   engineering = FALSE,
-  ...
+  trim = TRUE,
+  nsmall = 0L,
+  ...,
+  verbose = getOption("verbose")
 ) {
+
+  msg <- function (...) if(isTRUE(verbose)) message("[format_SI] ", ...)
 
   log10_breaks <-
     set_names(
@@ -59,17 +66,50 @@ format_SI <- function (
     z <- log10(abs(x))
   }
 
-  if (isTRUE(engineering)) {
-    z <- z + 0.5
+  z_adj <- z + 0.5
+  msg("max(z) is: ", max(z))
+  msg("max(z_adj) is: ", max(z_adj))
+
+  signif_adj <-
+    signif
+
+  if (is.null(digits)) {
+    digits <- 0
   }
 
-  i <- findInterval(z, log10_breaks)
+  if (isTRUE(fixed)) {
+    digits_adj <- max(digits, 2 + floor(z_adj))
+  } else {
+    digits_adj <- digits
+  }
+
+  msg("digits is: ", digits)
+  msg("digits_adj is: ", digits_adj)
+
+  if (isTRUE(engineering)) {
+    i <- findInterval(z_adj, log10_breaks)
+  } else {
+    i <- findInterval(z, log10_breaks)
+  }
 
   # Set prefix to " " for very small values < 1e-24
   i <- if_else(i == 0, which(log10_breaks == 0), i)
 
-  rounded <- qtytools::round_half_up(x / (10 ^ log10_breaks[i]), digits)
-  formatted <- format(rounded, trim = TRUE, scientific = FALSE, digits = digits, ...)
+  rounded <-
+    qtytools::round_half_up(
+      x / (10 ^ log10_breaks[i]),
+      digits = digits_adj) #round(i / log10(x)))
+
+  # NOTE: to in `format()`, `digits` really means `signif`;
+  # `nsmall` means `digits` ... it's confusing!
+  formatted <-
+    format(
+      rounded,
+      #trim = trim,
+      scientific = FALSE,
+      digits = signif,
+      nsmall = digits,
+      ...)
 
   str_trim(paste0(formatted, names(log10_breaks)[i]))
 
