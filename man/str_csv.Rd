@@ -4,7 +4,7 @@
 \alias{str_csv}
 \title{Paste values together, separated by commas}
 \usage{
-str_csv(..., collapse = ", ")
+str_csv(..., collapse = ", ", na.rm = FALSE)
 }
 \arguments{
 \item{\dots}{character}

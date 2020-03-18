@@ -8,11 +8,25 @@ test_that("numeric vector", {
 
 })
 
+test_that("na.rm", {
+
+  x <- c(1, NA, 99)
+
+  expect_identical(
+    str_csv(x),
+    "1, NA, 99")
+
+  expect_identical(
+    str_csv(x, na.rm = TRUE),
+    "1, 99")
+
+})
+
 test_that("no arguments", {
 
   expect_identical(
     str_csv(),
-    character(0))
+    "")
 
 })
 
