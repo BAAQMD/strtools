@@ -4,7 +4,7 @@
 \alias{format_SI}
 \title{Format according to SI conventions}
 \usage{
-format_SI(x, fixed = FALSE, ...)
+format_SI(x, digits = 2, fixed = FALSE, engineering = FALSE, ...)
 }
 \arguments{
 \item{x}{(numeric)}
@@ -19,7 +19,32 @@ format_SI(1)
 format_SI(9:11)
 format_SI(c(33, 333, 3333, 33333333))
 format_SI(seq(0, 1.2, len = 7) * 1000)
-format_SI(seq(0, 1.2, len = 7) * 1000, fixed = TRUE)
+format_SI(seq(0, 1.2, length.out = 5) * 1e3, fixed = TRUE)
+format_SI(seq(0, 0.9, length.out = 4) * 1e3, fixed = TRUE)
+
+format_SI(seq(0, 0.9, length.out = 4) * 1e3, fixed = TRUE, engineering = TRUE)
+format_SI(seq(0, 0.9, length.out = 4) * 1e4, fixed = TRUE, engineering = TRUE)
+format_SI(seq(0, 0.9, length.out = 4) * 1e5, fixed = TRUE, engineering = TRUE)
+format_SI(seq(0, 0.9, length.out = 4) * 1e6, fixed = TRUE, engineering = TRUE)
+format_SI(seq(0, 0.9, length.out = 4) * 1e7, fixed = TRUE, engineering = TRUE)
+
+format_SI(seq(0, 1.25, length.out = 6) * 1e2, fixed = TRUE, engineering = TRUE)
+format_SI(seq(0, 1.25, length.out = 6) * 1e3, fixed = TRUE, engineering = TRUE)
+format_SI(seq(0, 1.25, length.out = 6) * 1e4, fixed = TRUE, engineering = TRUE)
+format_SI(seq(0, 1.25, length.out = 6) * 1e5, fixed = TRUE, engineering = TRUE)
+format_SI(seq(0, 1.25, length.out = 6) * 1e6, fixed = TRUE, engineering = TRUE)
+
+format_SI(seq(0, 0.75, length.out = 4) * 1e0, fixed = TRUE, engineering = TRUE)
+format_SI(seq(0, 0.75, length.out = 4) * 1e1, fixed = TRUE, engineering = TRUE)
+format_SI(seq(0, 0.75, length.out = 4) * 1e2, fixed = TRUE, engineering = TRUE)
+format_SI(seq(0, 0.75, length.out = 4) * 1e3, fixed = TRUE, engineering = TRUE)
+format_SI(seq(0, 0.75, length.out = 4) * 1e4, fixed = TRUE, engineering = TRUE)
+format_SI(seq(0, 0.75, length.out = 4) * 1e5, fixed = TRUE, engineering = TRUE)
+format_SI(seq(0, 0.75, length.out = 4) * 1e6, fixed = TRUE, engineering = TRUE)
+format_SI(seq(0, 0.75, length.out = 4) * 1e7, fixed = TRUE, engineering = TRUE)
+format_SI(seq(0, 0.75, length.out = 4) * 1e8, fixed = TRUE, engineering = TRUE)
+
+format_SI(seq(0, 1.00, length.out = 5) * 1e8)
 
 }
 \seealso{

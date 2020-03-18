@@ -8,35 +8,69 @@
 #' format_SI(9:11)
 #' format_SI(c(33, 333, 3333, 33333333))
 #' format_SI(seq(0, 1.2, len = 7) * 1000)
-#' format_SI(seq(0, 1.2, len = 7) * 1000, fixed = TRUE)
+#' format_SI(seq(0, 1.2, length.out = 5) * 1e3, fixed = TRUE)
+#' format_SI(seq(0, 0.9, length.out = 4) * 1e3, fixed = TRUE)
+#'
+#' format_SI(seq(0, 0.9, length.out = 4) * 1e3, fixed = TRUE, engineering = TRUE)
+#' format_SI(seq(0, 0.9, length.out = 4) * 1e4, fixed = TRUE, engineering = TRUE)
+#' format_SI(seq(0, 0.9, length.out = 4) * 1e5, fixed = TRUE, engineering = TRUE)
+#' format_SI(seq(0, 0.9, length.out = 4) * 1e6, fixed = TRUE, engineering = TRUE)
+#' format_SI(seq(0, 0.9, length.out = 4) * 1e7, fixed = TRUE, engineering = TRUE)
+#'
+#' format_SI(seq(0, 1.25, length.out = 6) * 1e2, fixed = TRUE, engineering = TRUE)
+#' format_SI(seq(0, 1.25, length.out = 6) * 1e3, fixed = TRUE, engineering = TRUE)
+#' format_SI(seq(0, 1.25, length.out = 6) * 1e4, fixed = TRUE, engineering = TRUE)
+#' format_SI(seq(0, 1.25, length.out = 6) * 1e5, fixed = TRUE, engineering = TRUE)
+#' format_SI(seq(0, 1.25, length.out = 6) * 1e6, fixed = TRUE, engineering = TRUE)
+#'
+#' format_SI(seq(0, 0.75, length.out = 4) * 1e0, fixed = TRUE, engineering = TRUE)
+#' format_SI(seq(0, 0.75, length.out = 4) * 1e1, fixed = TRUE, engineering = TRUE)
+#' format_SI(seq(0, 0.75, length.out = 4) * 1e2, fixed = TRUE, engineering = TRUE)
+#' format_SI(seq(0, 0.75, length.out = 4) * 1e3, fixed = TRUE, engineering = TRUE)
+#' format_SI(seq(0, 0.75, length.out = 4) * 1e4, fixed = TRUE, engineering = TRUE)
+#' format_SI(seq(0, 0.75, length.out = 4) * 1e5, fixed = TRUE, engineering = TRUE)
+#' format_SI(seq(0, 0.75, length.out = 4) * 1e6, fixed = TRUE, engineering = TRUE)
+#' format_SI(seq(0, 0.75, length.out = 4) * 1e7, fixed = TRUE, engineering = TRUE)
+#' format_SI(seq(0, 0.75, length.out = 4) * 1e8, fixed = TRUE, engineering = TRUE)
+#'
+#' format_SI(seq(0, 1.00, length.out = 5) * 1e8)
 #'
 #' @seealso (Stack Overflow post)[http://stackoverflow.com/questions/21045545/how-to-accurately-display-si-prefix-for-numbers-in-y-axis-scale-of-plot-made-wit]
 #'
 #' @export
 format_SI <- function (
   x,
+  digits = 2,
   fixed = FALSE,
+  engineering = FALSE,
   ...
 ) {
 
-  breaks <- 10 ** seq(-24, 24, by = 3)
-  prefixes <- c("y", "z", "a", "f", "p", "n", "µ", "m", " ",
-                "k", "M", "G", "T", "P", "E", "Z", "Y")
+  log10_breaks <-
+    set_names(
+      seq(-24, 24, by = 3),
+      c("y", "z", "a", "f", "p", "n", "µ", "m", " ", "k", "M", "G", "T", "P", "E", "Z", "Y"))
 
   if (isTRUE(fixed)) {
-    # Single array index corresponding to largest value of x
-    i <- findInterval(abs(max(x)), breaks)
+    # Single value corresponding to the magnitude of max(x)
+    z <- log10(max(abs(x), na.rm = TRUE))
   } else {
     # Vector with array indices according to position in intervals
-    i <- findInterval(abs(x), breaks)
+    z <- log10(abs(x))
   }
 
+  if (isTRUE(engineering)) {
+    z <- z + 0.5
+  }
+
+  i <- findInterval(z, log10_breaks)
+
   # Set prefix to " " for very small values < 1e-24
-  i <- ifelse(i == 0, which(breaks == 1e0), i)
+  i <- if_else(i == 0, which(log10_breaks == 0), i)
 
-  rounded <- round(x / breaks[i], 1)
-  formatted <- format(rounded, trim = TRUE, scientific = FALSE, ...)
+  rounded <- qtytools::round_half_up(x / (10 ^ log10_breaks[i]), digits)
+  formatted <- format(rounded, trim = TRUE, scientific = FALSE, digits = digits, ...)
 
-  str_trim(paste0(formatted, prefixes[i]))
+  str_trim(paste0(formatted, names(log10_breaks)[i]))
 
 }
