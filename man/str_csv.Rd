@@ -4,10 +4,18 @@
 \alias{str_csv}
 \title{Paste values together, separated by commas}
 \usage{
-str_csv(..., collapse = ", ", na.rm = FALSE)
+str_csv(..., collapse = ", ", n = Inf, na = "NA", na.rm = FALSE)
 }
 \arguments{
-\item{\dots}{character}
+\item{...}{(character) strings to concatenate}
+
+\item{collapse}{(character) separator}
+
+\item{n}{(integer) concatenate at most this many strings}
+
+\item{na}{(character) if \code{na.rm} is \code{FALSE}, replace \code{NA} values with this}
+
+\item{na.rm}{(logical) remove \code{NA} values? (see also: \code{na} parameter, above)}
 }
 \description{
 Paste values together, separated by commas
@@ -15,5 +23,11 @@ Paste values together, separated by commas
 \examples{
 str_csv(1:3)
 str_csv(1:3, "A", c("B", "C"))
+str_csv(LETTERS, n = 3)
 
+}
+\seealso{
+\itemize{
+\item \code{\link[=str_and]{str_and()}}
+}
 }

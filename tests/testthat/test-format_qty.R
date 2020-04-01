@@ -9,6 +9,8 @@ test_that("digits", {
   expect_equal(format_qty(pi, digits = 4), "3.1416")
   expect_equal(format_qty(pi, digits = 5), "3.14159")
 
+  x <- seq(0, 1.25, length.out = 6)
+
   expect_equal(
     format_qty(x * 1e1),
     c("0.0", "2.5", "5.0", "7.5", "10.0", "12.5"))
