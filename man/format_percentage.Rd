@@ -4,7 +4,7 @@
 \alias{format_percentage}
 \title{Format percentages}
 \usage{
-format_percentage(x, digits = 0, ...)
+format_percentage(x, digits = 0, suffix = "\%")
 }
 \arguments{
 \item{x}{(numeric)}

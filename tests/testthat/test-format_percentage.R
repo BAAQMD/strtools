@@ -8,3 +8,7 @@ test_that("simple", {
 test_that("digits", {
   expect_identical(format_percentage(2/3, digits = 3), "66.667%")
 })
+
+test_that("trailing zero", {
+  expect_identical(format_percentage(0.01, digits = 1), "1.0%")
+})
