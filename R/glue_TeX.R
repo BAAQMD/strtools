@@ -3,6 +3,9 @@
 #' @param ... passed to [glue::glue()]
 #' @param output passed to [latex2exp::TeX()]
 #'
+#' @importFrom glue glue
+#' @importFrom latex2exp TeX
+#'
 #' @return suitable for use with ggplot, etc.
 #' @export
 #'
