@@ -13,7 +13,9 @@ Imports:
   scales,
   readr, 
   glue,
-  dplyr
+  dplyr,
+  tibble,
+  tidyr
 Depends: 
   tidyverse,
   stringr

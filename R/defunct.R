@@ -89,9 +89,9 @@ format_each <- function (input_data, ..., digits) {
 
   .Defunct("mutate_at(vars(...), funs(round), digits = digits)")
 
-  f <- function (x) round(x, digits = digits)
-  # WAS: mutate_each_(input_data, funs(f), lazyeval::lazy_dots(...))
-  mutate_at(input_data, vars(...), funs(f))
+  # f <- function (x) round(x, digits = digits)
+  # # WAS: mutate_each_(input_data, funs(f), lazyeval::lazy_dots(...))
+  # mutate_at(input_data, vars(...), funs(f))
 
 }
 
@@ -132,6 +132,7 @@ format_scientific.default <- function (x, digits = getOption("digits"), ...) {
   formatC(x, format = "e", digits = digits, ...) %>% sci_format
 }
 
+#' @importFrom stringr str_match_all
 #' @export
 format_scientific.character <- function (x, ...) {
   SUPERSCRIPT_NUMERALS <- c(

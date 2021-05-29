@@ -1,6 +1,7 @@
 #' To format numbers and strings. See help("format") for more information.
 #'
 #' @rdname fixed_width
+#' @importFrom dplyr %>%
 #' @export
 fixed_width <- function (x, width, ...) {
   # TODO: .Deprecated("str_fixed_width")

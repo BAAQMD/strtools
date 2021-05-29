@@ -10,6 +10,7 @@
 #' format_percentage(2/3)
 #' format_percentage(2/3, digits = 3)
 #'
+#' @importFrom stringr str_remove
 #' @export
 format_percentage <- function (
   x,

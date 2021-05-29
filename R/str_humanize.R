@@ -72,6 +72,7 @@ str_humanize.numeric <- function (x, digits = NULL, tiny = NULL, zero = NULL, ..
 
 #' @method str_humanize tbl_df
 #' @describeIn str_humanize Apply \code{str_humanize(...)} to each column in turn
+#' @importFrom dplyr mutate_all funs
 #' @export
 str_humanize.tbl_df <- function (x, ...) {
   f <- function (z) str_humanize(z, ...)
