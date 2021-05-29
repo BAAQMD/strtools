@@ -16,8 +16,7 @@ Imports:
   dplyr
 Depends: 
   tidyverse,
-  stringr,
-  scales
+  stringr
 Suggests: 
   testthat (>= 2.1.0),
   knitr
