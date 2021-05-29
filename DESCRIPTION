@@ -21,7 +21,8 @@ Depends:
   stringr
 Suggests: 
   testthat (>= 2.1.0),
-  knitr
+  knitr,
+  qtytools
 License: MIT
 Encoding: UTF-8
 LazyData: true
