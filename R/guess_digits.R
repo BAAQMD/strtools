@@ -8,6 +8,7 @@
 #' guess_digits(1)
 #' guess_digits(0.66)
 #' guess_digits(0.667)
+#' @export
 guess_digits <- function (x, digits = 0) {
 
   x <- na.omit(x)
