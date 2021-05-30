@@ -13,14 +13,13 @@ Parse a single character string representing a vector of integers
 TODO: ensure no rounding occurs (validate input; no decimal places)?
 }
 \examples{
-\dontrun{
 parse_integers("1")
 parse_integers("c(2, 3)")
 parse_integers("c(5:9)")
 parse_integers("5:9")
 parse_integers("NA")
 parse_integers("foo")
-}
+
 }
 \seealso{
 unpack_ids
