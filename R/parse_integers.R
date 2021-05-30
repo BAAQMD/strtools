@@ -9,13 +9,14 @@
 #' @importFrom dplyr if_else
 #'
 #' @examples
+#' \dontrun{
 #' parse_integers("1")
 #' parse_integers("c(2, 3)")
 #' parse_integers("c(5:9)")
 #' parse_integers("5:9")
 #' parse_integers("NA")
 #' parse_integers("foo")
-#'
+#' }
 #' @export
 parse_integers <- function (x) {
 
