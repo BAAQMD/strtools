@@ -1,5 +1,6 @@
 #' format_decimal
 #'
+#' @importFrom stringr fixed
 #' @export
 format_decimal <- function (x, ..., signif = Inf) {
 

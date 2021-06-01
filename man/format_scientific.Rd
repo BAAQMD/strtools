@@ -10,8 +10,9 @@ format_scientific(x, ...)
 Scientific format (Unicode)
 }
 \examples{
+\dontrun{
 format_scientific(1.23e-5, digits = 3)
 format_scientific(11, digits = 2)
 format_scientific(9.0, digits = 2)
-
+}
 }

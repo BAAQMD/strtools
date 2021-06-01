@@ -7,8 +7,6 @@
 #' @export
 formatCommas <- function (table, columns) {
 
-  require(DT)
-
   DT::formatCurrency(table, columns, currency = "")
 
 }

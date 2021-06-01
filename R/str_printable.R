@@ -5,6 +5,7 @@
 #' print(rawToChar(x))
 #' str_printable(rawToChar(x))
 #'
+#' @importFrom stringr str_remove_all
 #' @export
 str_printable <- function (x, non_printable = "[^[:print:]]") {
   str_remove_all(x, non_printable)

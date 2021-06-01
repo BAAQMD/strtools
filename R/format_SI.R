@@ -38,6 +38,7 @@
 #'
 #' @seealso (Stack Overflow post)[http://stackoverflow.com/questions/21045545/how-to-accurately-display-si-prefix-for-numbers-in-y-axis-scale-of-plot-made-wit]
 #'
+#' @importFrom stringr str_trim
 #' @export
 format_SI <- function (
   x,

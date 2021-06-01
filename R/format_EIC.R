@@ -2,6 +2,7 @@
 #'
 #' @note FIXME: make this available to `../data-raw/SIP2016_crosswalk.R`
 #'
+#' @importFrom stringr str_pad str_sub str_detect
 #' @export
 format_EIC <- function (x) {
   is_only_digits <- function (...) str_detect(..., "^[[:digit:]]+$")
