@@ -11,7 +11,7 @@
 #' x %>% str_begins("C22")
 #'
 #' library(tidyverse)
-#' df <- data_frame(src_code = x)
+#' df <- tibble(src_code = x)
 #' df %>% filter(src_code %>% str_begins("G"))
 #' df %>% filter(src_code %>% str_begins("C22"))
 #'
