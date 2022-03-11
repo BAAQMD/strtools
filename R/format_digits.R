@@ -7,6 +7,11 @@
 #' @param ... passed to [formatC()]
 #'
 #' @export
-format_digits <- function (x, digits, ...) {
-  formatC(x, format = "f", flag = "#", digits = digits, ...)
+format_digits <- function (x, digits = NULL, ...) {
+  if (is.null(digits)) {
+    digits <- guess_digits(x)
+  }
+  formatted <- formatC(x, format = "f", flag = "#", digits = digits, ...)
+  formatted <- str_remove(formatted, "\\.$")
+  return(formatted)
 }
