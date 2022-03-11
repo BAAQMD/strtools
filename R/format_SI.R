@@ -1,8 +1,18 @@
 #' Format according to SI conventions
 #'
+#' @details
+#' If `fixed` is TRUE, the suffix will not be allowed to vary.
+#' The suffix corresponding to the largest value in `abs(x)` will be used.
+#'
+#' If `engineering` is TRUE, the magnitudes will shift upwards by 3
+#' for numbers less than 0.
+#'
 #' @param x (numeric)
-#' @param trim (logical) passed to [format()][base::format()]
-#' @param ... further arguments to [format()][base::format()]
+#' @param digits (numeric) passed to [format_digits()] under certain conditions (see Details)
+#' @param fixed (logical) see Details
+#' @param engineering (logical) see Details
+#' @param ... reserved for future use / backwards-compatibility
+#' @param verbose (logical)
 #'
 #' @examples
 #' format_SI(1)
@@ -36,81 +46,55 @@
 #'
 #' format_SI(seq(0, 1.00, length.out = 5) * 1e8)
 #'
-#' @seealso (Stack Overflow post)[http://stackoverflow.com/questions/21045545/how-to-accurately-display-si-prefix-for-numbers-in-y-axis-scale-of-plot-made-wit]
+#' @seealso
+#' - [format_qty()]
+#' - [format_digits()]
 #'
 #' @export
 format_SI <- function (
   x,
-  signif = 3,
   digits = NULL,
   fixed = FALSE,
   engineering = FALSE,
-  trim = TRUE,
-  nsmall = 0L,
   ...,
   verbose = getOption("verbose")
 ) {
 
   msg <- function (...) if(isTRUE(verbose)) message("[format_SI] ", ...)
 
-  log10_breaks <-
+  LOG10_BREAKS <-
     set_names(
       seq(-24, 24, by = 3),
       c("y", "z", "a", "f", "p", "n", "µ", "m", " ", "k", "M", "G", "T", "P", "E", "Z", "Y"))
 
-  if (isTRUE(fixed)) {
-    # Single value corresponding to the magnitude of max(x)
-    z <- log10(max(abs(x), na.rm = TRUE))
-  } else {
-    # Vector with array indices according to position in intervals
-    z <- log10(abs(x))
-  }
-
-  z_adj <- z + 0.5
-  msg("max(z) is: ", max(z))
-  msg("max(z_adj) is: ", max(z_adj))
-
-  signif_adj <-
-    signif
-
-  if (is.null(digits)) {
-    digits <- 0
-  }
-
-  if (isTRUE(fixed)) {
-    digits_adj <- max(digits, 2 + floor(z_adj))
-  } else {
-    digits_adj <- digits
-  }
-
-  msg("digits is: ", digits)
-  msg("digits_adj is: ", digits_adj)
+  z <- log10(abs(x))
 
   if (isTRUE(engineering)) {
-    i <- findInterval(z_adj, log10_breaks)
-  } else {
-    i <- findInterval(z, log10_breaks)
+    (z <- if_else(z < 0, z + 3, z))
+    z <- z[which.max(z)]
+  } else if (isTRUE(fixed)) {
+    z <- z[which.max(z)]
   }
 
-  # Set prefix to " " for very small values < 1e-24
-  i <- if_else(i == 0, which(log10_breaks == 0), i)
+  # Look up the suffix corresponding to z.
+  # For very small values (less than 1e-24), use the suffix for zero (""),
+  # since no suffix for those is defined above.
+  i <- findInterval(z, LOG10_BREAKS)
+  i <- replace(i, is.infinite(z), which(LOG10_BREAKS == 0))
+  suffix <- names(LOG10_BREAKS)[i]
 
-  rounded <-
-    qtytools::round_half_up(
-      x / (10 ^ log10_breaks[i]),
-      digits = digits_adj) #round(i / log10(x)))
+  # Divide out the magnitude, and round to the appropriate number of digits.
+  magnitude <- 10 ^ LOG10_BREAKS[i]
+  value <- x / magnitude
 
-  # NOTE: to in `format()`, `digits` really means `signif`;
-  # `nsmall` means `digits` ... it's confusing!
-  formatted <-
-    format(
-      rounded,
-      #trim = trim,
-      scientific = FALSE,
-      digits = signif,
-      nsmall = digits,
-      ...)
+  if (is.null(digits) && isFALSE(engineering)) {
+    formatted <- format_digits(value, digits = 0)
+  } else {
+    stopifnot(is.numeric(digits))
+    formatted <- format_digits(value, digits = digits)
+  }
 
-  str_trim(paste0(formatted, names(log10_breaks)[i]))
+  (suffixed <- str_trim(str_c(formatted, suffix)))
+  return(suffixed)
 
 }
