@@ -6,12 +6,9 @@
 \usage{
 format_SI(
   x,
-  signif = 3,
   digits = NULL,
   fixed = FALSE,
   engineering = FALSE,
-  trim = TRUE,
-  nsmall = 0L,
   ...,
   verbose = getOption("verbose")
 )
@@ -19,12 +16,25 @@ format_SI(
 \arguments{
 \item{x}{(numeric)}
 
-\item{trim}{(logical) passed to \link[base:format]{format()}}
+\item{digits}{(numeric) passed to \code{\link[=format_digits]{format_digits()}} under certain conditions (see Details)}
 
-\item{...}{further arguments to \link[base:format]{format()}}
+\item{fixed}{(logical) see Details}
+
+\item{engineering}{(logical) see Details}
+
+\item{...}{reserved for future use / backwards-compatibility}
+
+\item{verbose}{(logical)}
 }
 \description{
 Format according to SI conventions
+}
+\details{
+If \code{fixed} is TRUE, the suffix will not be allowed to vary.
+The suffix corresponding to the largest value in \code{abs(x)} will be used.
+
+If \code{engineering} is TRUE, the magnitudes will shift upwards by 3
+for numbers less than 0.
 }
 \examples{
 format_SI(1)
@@ -60,5 +70,8 @@ format_SI(seq(0, 1.00, length.out = 5) * 1e8)
 
 }
 \seealso{
-(Stack Overflow post)\link{http://stackoverflow.com/questions/21045545/how-to-accurately-display-si-prefix-for-numbers-in-y-axis-scale-of-plot-made-wit}
+\itemize{
+\item \code{\link[=format_qty]{format_qty()}}
+\item \code{\link[=format_digits]{format_digits()}}
+}
 }

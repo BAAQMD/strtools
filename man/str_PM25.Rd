@@ -5,7 +5,7 @@
 \title{str_PM25}
 \usage{
 str_PM25(
-  format = c("utf8", "html", "TeX"),
+  format = c("character", "utf8", "html", "TeX"),
   verbose = getOption("verbose", default = FALSE)
 )
 }

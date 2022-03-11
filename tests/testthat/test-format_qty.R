@@ -60,7 +60,7 @@ test_that("<1 order of magnitude", {
 
   expect_equal(
     format_qty(x * 1e3),
-    c("0.00k", "0.25k", "0.50k", "0.75k"))
+    c("0", "250", "500", "750"))
 
   expect_equal(
     format_qty(x * 1e4),
@@ -69,9 +69,10 @@ test_that("<1 order of magnitude", {
   expect_equal(
     format_qty(x * 1e5),
     c("0k", "25k", "50k", "75k"))
+
   expect_equal(
     format_qty(x * 1e6),
-    c("0.00M", "0.25M", "0.50M", "0.75M"))
+    c("0k", "250k", "500k", "750k"))
 
   expect_equal(
     format_qty(x * 1e7),

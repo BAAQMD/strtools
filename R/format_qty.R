@@ -14,10 +14,8 @@ format_qty <- function (
   verbose = getOption("verbose")
 ) {
 
-  if (is.null(digits)) {
-    fixed <- TRUE
-  } else {
-    fixed <- FALSE
+  if (isFALSE(is.null(digits))) {
+    engineering <- FALSE
   }
 
   formatted <-

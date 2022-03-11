@@ -1,7 +1,7 @@
 Package: strtools
 Type: Package
 Title: Parse, Format, and Manipulate Strings
-Version: 2021.06.15
+Version: 2022.03.11
 Author: David Holstius
 Maintainer: David Holstius <dholstius@baaqmd.gov>
 Description: Provides `parse_xxx`, `format_xxx`, and `str_xxx` helper functions.
@@ -11,21 +11,21 @@ Imports:
   plyr,
   purrr,
   scales,
-  readr, 
+  readr,
   glue,
   dplyr,
   tibble,
   tidyr
-Depends: 
+Depends:
   tidyverse,
   stringr
-Suggests: 
+Suggests:
   testthat (>= 2.1.0),
   knitr,
   qtytools
 License: MIT
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 7.1.1
+RoxygenNote: 7.1.2
 Roxygen: list(markdown = TRUE)
 VignetteBuilder: knitr

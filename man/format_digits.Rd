@@ -4,7 +4,7 @@
 \alias{format_digits}
 \title{Format with a fixed number of digits, keeping trailing zeros}
 \usage{
-format_digits(x, digits, ...)
+format_digits(x, digits = NULL, ...)
 }
 \arguments{
 \item{x}{numeric}

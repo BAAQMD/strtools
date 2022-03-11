@@ -1,24 +1,32 @@
 #' guess_digits
 #'
-#' Really crude heuristic (!) and linear search (!) for an approximate precision.
-#'
-#' @seealso [format_decimal()]
+#' @seealso
+#' - [format_digits()]
+#' - [format_SI()]
+#' - [format_qty()]
 #'
 #' @examples
-#' guess_digits(1)
+#' guess_digits(c(1, 0.6, 0.25))
 #' guess_digits(0.66)
 #' guess_digits(0.667)
-#' @export
-guess_digits <- function (x, digits = 0) {
+#'
+guess_digits <- function (x, max = base::max(c(6, getOption("digits")))) {
 
-  x <- na.omit(x)
-  (d <- round(x, digits) - round(x, digits + 1))
+  stopifnot(is.numeric(x))
 
-  if (all(d == 0)) {
-    return(digits)
+  # Note: formatC() will complain if digits > 50 here; see ?formatC
+  formatted <- formatC(x, digits = max, drop0trailing = TRUE)
+
+  # Instances of a decimal point w/ trailing digits
+  trailing <- na.omit(str_match(formatted, "\\.[0-9]+"))
+
+  if (length(trailing) == 0) {
+    digits <- 0
   } else {
-    (digits <- guess_digits(x, digits + 1))
-    return(digits)
+    # Don't count the decimal point
+    digits <- max(nchar(trailing)) - 1
   }
+
+  return(digits)
 
 }
