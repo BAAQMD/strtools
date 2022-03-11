@@ -4,16 +4,20 @@
 \alias{guess_digits}
 \title{guess_digits}
 \usage{
-guess_digits(x, digits = 0)
+guess_digits(x, max = base::max(c(6, getOption("digits"))))
 }
 \description{
-Really crude heuristic (!) and linear search (!) for an approximate precision.
+guess_digits
 }
 \examples{
-guess_digits(1)
+guess_digits(c(1, 0.6, 0.25))
 guess_digits(0.66)
 guess_digits(0.667)
 }
 \seealso{
-\code{\link[=format_decimal]{format_decimal()}}
+\itemize{
+\item \code{\link[=format_digits]{format_digits()}}
+\item \code{\link[=format_SI]{format_SI()}}
+\item \code{\link[=format_qty]{format_qty()}}
+}
 }
