@@ -4,7 +4,7 @@
 #' @export
 #'
 str_PM25 <- function (
-  format = c("utf8", "html", "TeX"),
+  format = c("character", "utf8", "html", "TeX"),
   verbose = getOption("verbose", default = FALSE)
 ) {
 
@@ -22,7 +22,7 @@ str_PM25 <- function (
     format <- match.arg(format)
   }
 
-  if (format == "utf8") {
+  if (format %in% c("character", "utf8")) {
     token <- "PM2.5"
   } else if (format == "html") {
     token <- "PM<sub>2.5</sub>"
