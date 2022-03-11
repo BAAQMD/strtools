@@ -12,7 +12,7 @@ test_that("real values", {
 test_that("missing or infinite values", {
 
   expect_equal(
-    parse_percentage(c("NA", "None", "", "Inf")),
-    c(NA, NA, NA, Inf))
+    parse_percentage(c("12.3%", "NA", "None", "", "Inf")),
+    c(0.123, NA, NA, NA, Inf))
 
 })

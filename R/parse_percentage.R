@@ -19,11 +19,16 @@
 #' @export
 parse_percentage <- function (x, na = c("", "NA", "None"), ...) {
 
-  # Might instead use readr::parse_number
-  cleaned <- stringr::str_replace_all(x, "%", "")
-  parsed <- readr::parse_double(cleaned, na = na, ...)
+  parse_value <- function (x) {
+    parsed <- readr::parse_double(x, na = union(na, c("Inf", "-Inf")), ...)
+    parsed[x == "Inf"] <- Inf
+    parsed[x == "-Inf"] <- -Inf
+    return(parsed)
+  }
 
-  decimal_fraction <- parsed / 100.0
-  return(decimal_fraction)
+  stripped <- stringr::str_remove(x, "%$")
+  fraction <- parse_value(stripped) / 100.0
+
+  return(fraction)
 
 }
