@@ -12,6 +12,9 @@
 #' str_suffix(1:2, "m")
 #' str_suffix(1:5, " or more", 3)
 #' str_suffix(1:3, c("st", "nd", "rd"))
+#'
+#' @seealso
+#' - [str_prefix()]
 str_suffix <- function (x, suffix, list = seq_along(x)) {
   suffixed <- paste0(x, suffix)
   result <- replace(x, list, suffixed[list])

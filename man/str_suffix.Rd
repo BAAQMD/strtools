@@ -23,4 +23,10 @@ str_suffix
 str_suffix(1:2, "m")
 str_suffix(1:5, " or more", 3)
 str_suffix(1:3, c("st", "nd", "rd"))
+
+}
+\seealso{
+\itemize{
+\item \code{\link[=str_prefix]{str_prefix()}}
+}
 }
