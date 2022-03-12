@@ -4,10 +4,12 @@
 \alias{str_tex}
 \title{str_tex}
 \usage{
-str_tex(...)
+str_tex(..., output = c("expression", "text", "ast"))
 }
 \arguments{
 \item{...}{(character) combined via \link[stringr:str_glue(...)]{stringr::str_glue(...)}.}
+
+\item{output}{(character) one of "expression", "text", or "ast"; see \code{\link[latex2exp:TeX]{latex2exp::TeX()}}.}
 }
 \value{
 
