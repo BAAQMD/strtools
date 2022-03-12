@@ -13,6 +13,7 @@ guess_digits
 guess_digits(c(1, 0.6, 0.25))
 guess_digits(0.66)
 guess_digits(0.667)
+
 }
 \seealso{
 \itemize{
