@@ -91,7 +91,6 @@ format_SI <- function (
   if (is.null(digits) && isFALSE(engineering)) {
     formatted <- format_digits(value, digits = 0)
   } else {
-    stopifnot(is.numeric(digits))
     formatted <- format_digits(value, digits = digits)
   }
 
