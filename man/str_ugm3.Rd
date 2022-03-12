@@ -5,12 +5,17 @@
 \title{str_ugm3}
 \usage{
 str_ugm3(
-  format = c("utf8", "html", "TeX"),
+  format = c("character", "utf8", "html", "TeX"),
   verbose = getOption("verbose", default = FALSE)
 )
 }
-\value{
+\arguments{
+\item{format}{(character) one of "character", "utf8", "html", or "TeX"}
 
+\item{verbose}{(logical)}
+}
+\value{
+representation of "ug/m3" (micrograms per cubic meter)
 }
 \description{
 str_ugm3
