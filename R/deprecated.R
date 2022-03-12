@@ -10,6 +10,7 @@
 #' @export
 #'
 glue_TeX <- function (..., output = c("expression", "text", "ast")) {
+  .Deprecated("str_tex")
   output <- match.arg(output)
   glued <- glue::glue(...)
   return(latex2exp::TeX(glued, output = output))
