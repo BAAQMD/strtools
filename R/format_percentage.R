@@ -17,27 +17,7 @@ format_percentage <- function (
   digits = 0,
   suffix = "%"
 ) {
-
-  rounded <-
-    round(
-      100 * x,
-      digits = digits)
-
-  formatted <-
-    formatC(
-      rounded,
-      digits = digits,
-      format = "f",
-      flag = "#",
-      drop0trailing = FALSE) %>%
-    str_remove(
-      "\\.$")
-
-  suffixed <-
-    str_c(
-      formatted,
-      suffix)
-
+  formatted <- format_digits(100 * x, digits = digits)
+  suffixed <- str_c(formatted, suffix)
   return(suffixed)
-
 }
