@@ -11,23 +11,25 @@ format_percent_change <- function (
   x,
   digits = 0,
   na = "",
-  zero = "0%"
+  zero = "0%",
+  sign = TRUE
 ) {
 
-  change <- (x - 1)
+  delta <- (x - 1)
 
   formatted <-
     if_else(
-      change == 0,
+      delta == 0,
       true = zero,
-      false = format_percentage(abs(change), digits = digits),
+      false = format_percentage(abs(delta), digits = digits),
       missing = na)
 
-  negative <- which(change < 0)
-  formatted[negative] <- str_c("-", formatted[negative])
-
-  positive <- which(change > 0)
-  formatted[positive] <- str_c("+", formatted[positive])
+  if (isTRUE(sign)) {
+    negative <- which(delta < 0)
+    positive <- which(delta > 0)
+    formatted[positive] <- str_c("+", formatted[positive])
+    formatted[negative] <- str_c("-", formatted[negative])
+  }
 
   return(formatted)
 

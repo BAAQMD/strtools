@@ -24,3 +24,9 @@ test_that("mixed", {
     format_percent_change(c(1.125, 1.000, NA, 0.875)),
     c("+12%", "0%", "", "-12%"))
 })
+
+test_that("sign = FALSE", {
+  expect_equal(
+    format_percent_change(c(1.125, 1.000, NA, 0.875), sign = FALSE),
+    c("12%", "0%", "", "12%"))
+})
