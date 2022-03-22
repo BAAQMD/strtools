@@ -9,14 +9,14 @@
 #' str_or(x)
 #'
 #' @export
-str_or <- function (x, ...) {
+str_or <- function (x, ..., .sep = ",") {
   x <- c(x, ...)
   len_x <- length(x)
   if (len_x == 2) {
     return(str_c(x, collapse = " or "))
   } else if (len_x >= 3) {
     x[len_x] <- str_c("or ", x[len_x], collapse = "")
-    return(str_c(x, collapse = ", "))
+    return(str_c(x, collapse = str_c(.sep, " ")))
   } else {
     return(x)
   }

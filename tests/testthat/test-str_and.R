@@ -19,3 +19,8 @@ test_that("three items", {
   x <- c("apples", "oranges", "pears")
   expect_equal(str_and(x), "apples, oranges, and pears")
 })
+
+test_that("semicolon", {
+  x <- c("apples", "oranges", "pears")
+  expect_equal(str_and(x, .sep=";"), "apples; oranges; and pears")
+})
