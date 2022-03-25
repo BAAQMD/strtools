@@ -1,13 +1,13 @@
 #' str_ugm3
 #'
-#' @param format (character) one of "character", "utf8", "html", or "TeX"
+#' @param format (character) one of "character", "utf8", "html", "TeX", or "markdown"
 #' @param verbose (logical)
 #'
 #' @return representation of "ug/m3" (micrograms per cubic meter)
 #'
 #' @export
 str_ugm3 <- function (
-  format = c("character", "utf8", "html", "TeX"),
+  format = c("character", "utf8", "html", "TeX", "markdown"),
   verbose = getOption("verbose", default = FALSE)
 ) {
   msg <- function(...) if (isTRUE(verbose))
@@ -37,6 +37,9 @@ str_ugm3 <- function (
   }
   else if (format == "TeX") {
     token <- "µg/m$^3$"
+  }
+  else if (format == "markdown") {
+    token <- "µg/m^3^"
   }
   else {
     stop("Unknown format ", format)

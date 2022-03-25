@@ -1,10 +1,12 @@
 #' str_PM25
 #'
 #' @return
+#' @param format choice of output format
+#' @param verbose (logical)
 #' @export
 #'
 str_PM25 <- function (
-  format = c("character", "utf8", "html", "TeX"),
+  format = c("character", "utf8", "html", "TeX", "markdown"),
   verbose = getOption("verbose", default = FALSE)
 ) {
 
@@ -28,6 +30,8 @@ str_PM25 <- function (
     token <- "PM<sub>2.5</sub>"
   } else if (format == "TeX") {
     token <- "PM$_{2.5}$"
+  } else if (format == "markdown") {
+    token <- "PM~2.5~"
   } else {
     stop("Unknown format ", format)
   }
