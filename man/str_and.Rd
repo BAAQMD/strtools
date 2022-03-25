@@ -4,7 +4,7 @@
 \alias{str_and}
 \title{str_and}
 \usage{
-str_and(x, ...)
+str_and(x, ..., .sep = ",")
 }
 \description{
 A more human-friendly version of \code{str_csv()}.

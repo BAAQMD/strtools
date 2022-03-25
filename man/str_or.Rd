@@ -4,7 +4,7 @@
 \alias{str_or}
 \title{str_or}
 \usage{
-str_or(x, ...)
+str_or(x, ..., .sep = ",")
 }
 \description{
 A more human-friendly version of \code{str_csv()}.

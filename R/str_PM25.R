@@ -1,8 +1,8 @@
 #' str_PM25
 #'
-#' @return
 #' @param format choice of output format
 #' @param verbose (logical)
+#'
 #' @export
 #'
 str_PM25 <- function (

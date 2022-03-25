@@ -4,7 +4,7 @@
 \alias{format_percent_change}
 \title{format_percent_change}
 \usage{
-format_percent_change(x, digits = 0, na = "", zero = "0\%")
+format_percent_change(x, digits = 0, na = "", zero = "0\%", sign = TRUE)
 }
 \arguments{
 \item{x}{numeric}
