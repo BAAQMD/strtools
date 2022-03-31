@@ -9,7 +9,7 @@ format_SCC(x, digits)
 \arguments{
 \item{x}{(numeric or character)}
 
-\item{digits}{(integer) almost certainly 6 or 8}
+\item{digits}{(integer) almost certainly 6, 8, or 10}
 }
 \description{
 Properly (re)format EPA Source Classification Codes
