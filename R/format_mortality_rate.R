@@ -7,7 +7,6 @@
 #' @param suffix
 #'
 #' @importFrom stringr str_detect str_c
-#' @importFrom strtools format_count
 #' @importFrom units set_units
 #'
 #' @return
