@@ -1,7 +1,7 @@
 #' format_ugm3
 #'
-#' @param x
-#' @param digits
+#' @param x numeric
+#' @param digits passed to [format_digits()]
 #'
 #' @return
 #' @export

@@ -7,7 +7,9 @@
 format_ugm3(x, digits = 3)
 }
 \arguments{
-\item{digits}{}
+\item{x}{numeric}
+
+\item{digits}{passed to \code{\link[=format_digits]{format_digits()}}}
 }
 \value{
 
