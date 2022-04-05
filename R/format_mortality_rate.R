@@ -42,7 +42,7 @@ format_mortality_rate <- function (
       digits = signif)
 
   formatted <-
-    strtools::format_count(
+    format_count(
       approximated,
       digits = digits)
 
