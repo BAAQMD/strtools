@@ -13,7 +13,15 @@ format_mortality_rate(
 )
 }
 \arguments{
-\item{suffix}{}
+\item{x}{value}
+
+\item{units}{to express \code{value} in}
+
+\item{digits}{passed to \code{\link[=format_count]{format_count()}}}
+
+\item{signif}{passed to \code{\link[base:Round]{base::signif()}}}
+
+\item{suffix}{(optional) will default to "/M" if units are "/Mperson"}
 }
 \value{
 

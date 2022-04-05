@@ -7,7 +7,7 @@
 str_tex(..., output = c("expression", "text", "ast"))
 }
 \arguments{
-\item{...}{(character) combined via \link[stringr:str_glue(...)]{stringr::str_glue(...)}.}
+\item{...}{(character) combined via \code{\link[stringr:str_glue]{stringr::str_glue()}}.}
 
 \item{output}{(character) one of "expression", "text", or "ast"; see \code{\link[latex2exp:TeX]{latex2exp::TeX()}}.}
 }
@@ -16,4 +16,8 @@ str_tex(..., output = c("expression", "text", "ast"))
 }
 \description{
 Glues its \code{...} argument(s) together, then runs the result through \code{\link[latex2exp:TeX]{latex2exp::TeX()}}.
+}
+\examples{
+str_tex("$exp(x^\\\\beta))$")
+
 }

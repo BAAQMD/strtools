@@ -2,7 +2,7 @@
 #'
 #' Glues its `...` argument(s) together, then runs the result through [latex2exp::TeX()].
 #'
-#' @param ... (character) combined via [stringr::str_glue(...)].
+#' @param ... (character) combined via [stringr::str_glue()].
 #' @param output (character) one of "expression", "text", or "ast"; see [latex2exp::TeX()].
 #'
 #' @importFrom stringr str_glue
@@ -12,6 +12,8 @@
 #' @export
 #'
 #' @examples
+#' str_tex("$exp(x^\\beta))$")
+#'
 str_tex <- function (..., output = c("expression", "text", "ast")) {
   output <- match.arg(output)
   glued <- stringr::str_glue(...)

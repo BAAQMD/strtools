@@ -1,10 +1,10 @@
 #' format_mortality_rate
 #'
-#' @param x
-#' @param units
-#' @param digits
-#' @param signif
-#' @param suffix
+#' @param x value
+#' @param units to express `value` in
+#' @param digits passed to [format_count()]
+#' @param signif passed to [base::signif()]
+#' @param suffix (optional) will default to "/M" if units are "/Mperson"
 #'
 #' @importFrom stringr str_detect str_c
 #' @importFrom units set_units
