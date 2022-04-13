@@ -18,10 +18,8 @@ str_draft <- function (...) {
   try({
     last_commit <- git2r::last_commit()
     commit_id <- str_sub(last_commit$sha, 1, 7)
-    stamp <- str_c(stamp, str_glue(" [{commit_id]}]"))
+    stamp <- str_c(stamp, str_glue(" [{commit_id}]"))
   }, silent = TRUE)
-
-  stamp <- str_c(stamp, ...)
 
   return(stamp)
 
