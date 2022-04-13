@@ -15,4 +15,13 @@ test_that("format_digits() omits trailing decimal", {
 
 })
 
+test_that("format_digits() respects `na` argument", {
+
+  x <- c(1, NA, 2)
+  expect_equal(format_digits(x), c("1", NA, "2"))
+  expect_equal(format_digits(x, na = "-"), c("1", "-", "2"))
+  expect_equal(format_digits(x, na = ""), c("1", "", "2"))
+
+})
+
 

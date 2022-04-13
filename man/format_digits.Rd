@@ -4,12 +4,14 @@
 \alias{format_digits}
 \title{Format with a fixed number of digits, keeping trailing zeros}
 \usage{
-format_digits(x, digits = NULL, ...)
+format_digits(x, digits = NULL, na = NA_character_, ...)
 }
 \arguments{
 \item{x}{numeric}
 
-\item{digits}{number of digits to keep}
+\item{digits}{number of digits to keep; passed to \code{\link[=formatC]{formatC()}}}
+
+\item{na}{replace \code{NA} with this value}
 
 \item{...}{passed to \code{\link[=formatC]{formatC()}}}
 }
