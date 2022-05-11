@@ -8,12 +8,15 @@
 #' @param ... passed to [formatC()]
 #'
 #' @export
-format_digits <- function (x, digits = NULL, na = NA_character_, ...) {
+format_digits <- function (x, digits = NULL, na = NA_character_, ..., sign = FALSE) {
   if (is.null(digits)) {
     digits <- guess_digits(x)
   }
   formatted <- formatC(x, format = "f", flag = "#", digits = digits, ...)
   formatted <- str_remove(formatted, "\\.$")
+  if (isTRUE(sign)) {
+    formatted <- str_c(str_sign(x), formatted)
+  }
   formatted[is.na(x)] <- na
   return(formatted)
 }
