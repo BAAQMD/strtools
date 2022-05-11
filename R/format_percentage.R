@@ -15,9 +15,10 @@
 format_percentage <- function (
   x,
   digits = 0,
-  suffix = "%"
+  suffix = "%",
+  ...
 ) {
-  formatted <- format_digits(100 * x, digits = digits)
+  formatted <- format_digits(100 * x, digits = digits, ...)
   suffixed <- str_c(formatted, suffix)
   return(suffixed)
 }
