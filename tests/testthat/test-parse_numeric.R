@@ -17,3 +17,19 @@ test_that("decimals work", {
     round(x, digits = 2))
 
 })
+
+test_that("scientific notation works", {
+
+  expect_equal(
+    parse_numeric("1.4e-3"),
+    0.0014)
+
+  expect_equal(
+    parse_numeric("1.4E+3"),
+    1400)
+
+  expect_equal(
+    parse_numeric("1.4e03"),
+    1400)
+
+})

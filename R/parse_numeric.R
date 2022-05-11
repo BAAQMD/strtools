@@ -7,7 +7,8 @@
 parse_numeric <- function (x) {
 
   # extract all digits and decimal points
-  extracted <- stringr::str_extract(x, "[[:digit:].,+-]+")
+  pattern <- "[[:digit:].,+-]+([Ee][+-]?[0-9]+)?"
+  extracted <- stringr::str_extract(x, pattern)
 
   # FIXME: check for more than one '.' here
 
