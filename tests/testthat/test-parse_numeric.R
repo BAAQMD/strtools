@@ -22,14 +22,18 @@ test_that("scientific notation works", {
 
   expect_equal(
     parse_numeric("1.4e-3"),
-    0.0014)
+    1.4e-3)
 
   expect_equal(
     parse_numeric("1.4E+3"),
-    1400)
+    1.4e3)
 
   expect_equal(
     parse_numeric("1.4e03"),
-    1400)
+    1.4e03)
+
+  expect_equal(
+    parse_numeric("5.5 E-6"),
+    5.5e-6)
 
 })
