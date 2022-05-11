@@ -18,18 +18,21 @@ format_percent_change <- function (
   delta <- (x - 1)
 
   formatted <-
+    format_percentage(
+      abs(delta),
+      digits = digits,
+      sign = FALSE)
+
+  if (isTRUE(sign)) {
+    formatted <- str_c(str_sign(delta), formatted)
+  }
+
+  formatted <-
     if_else(
       delta == 0,
       true = zero,
-      false = format_percentage(abs(delta), digits = digits),
+      false = formatted,
       missing = na)
-
-  if (isTRUE(sign)) {
-    negative <- which(delta < 0)
-    positive <- which(delta > 0)
-    formatted[positive] <- str_c("+", formatted[positive])
-    formatted[negative] <- str_c("-", formatted[negative])
-  }
 
   return(formatted)
 
