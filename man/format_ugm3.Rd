@@ -4,15 +4,12 @@
 \alias{format_ugm3}
 \title{format_ugm3}
 \usage{
-format_ugm3(x, digits = 3)
+format_ugm3(x, digits = 3, ...)
 }
 \arguments{
 \item{x}{numeric}
 
 \item{digits}{passed to \code{\link[=format_digits]{format_digits()}}}
-}
-\value{
-
 }
 \description{
 format_ugm3
