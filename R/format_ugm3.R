@@ -9,8 +9,9 @@
 #'
 format_ugm3 <- function (
   x,
-  digits = 3
+  digits = 3,
+  ...
 ) {
   x <- set_units(x, "ug/m^3")
-  format_digits(units::drop_units(x), digits = digits)
+  format_digits(units::drop_units(x), digits = digits, ...)
 }
