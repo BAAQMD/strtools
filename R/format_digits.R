@@ -15,7 +15,8 @@ format_digits <- function (x, digits = NULL, na = NA_character_, ..., sign = FAL
   formatted <- formatC(x, format = "f", flag = "#", digits = digits, ...)
   formatted <- str_remove(formatted, "\\.$")
   if (isTRUE(sign)) {
-    formatted <- str_c(str_sign(x), formatted)
+    i <- which(x > 0)
+    formatted[i] <- str_c("+", formatted[i])
   }
   formatted[is.na(x)] <- na
   return(formatted)
