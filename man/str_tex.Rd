@@ -11,9 +11,6 @@ str_tex(..., output = c("expression", "text", "ast"))
 
 \item{output}{(character) one of "expression", "text", or "ast"; see \code{\link[latex2exp:TeX]{latex2exp::TeX()}}.}
 }
-\value{
-
-}
 \description{
 Glues its \code{...} argument(s) together, then runs the result through \code{\link[latex2exp:TeX]{latex2exp::TeX()}}.
 }

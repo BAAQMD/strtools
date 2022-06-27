@@ -9,7 +9,6 @@
 #' @importFrom stringr str_detect str_c
 #' @importFrom units set_units
 #'
-#' @return
 #' @export
 #'
 format_mortality_rate <- function (

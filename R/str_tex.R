@@ -8,7 +8,6 @@
 #' @importFrom stringr str_glue
 #' @importFrom latex2exp TeX
 #'
-#' @return
 #' @export
 #'
 #' @examples

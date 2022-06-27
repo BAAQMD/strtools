@@ -23,9 +23,6 @@ format_mortality_rate(
 
 \item{suffix}{(optional) will default to "/M" if units are "/Mperson"}
 }
-\value{
-
-}
 \description{
 format_mortality_rate
 }
