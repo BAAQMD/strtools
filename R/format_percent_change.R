@@ -15,7 +15,7 @@ format_percent_change <- function (
   sign = TRUE
 ) {
 
-  delta <- (x - 1)
+  delta <- (as.numeric(x) - 1)
 
   formatted <-
     format_percentage(

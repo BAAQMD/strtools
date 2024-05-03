@@ -30,3 +30,9 @@ test_that("sign = FALSE", {
     format_percent_change(c(1.125, 1.000, NA, 0.875), sign = FALSE),
     c("12%", "0%", "", "12%"))
 })
+
+test_that("units", {
+  expect_equal(
+    format_percent_change(set_units(2, "g") / set_units(4, "g")),
+    "-50%")
+})
