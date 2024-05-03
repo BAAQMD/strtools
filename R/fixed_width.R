@@ -1,7 +1,6 @@
 #' To format numbers and strings. See help("format") for more information.
 #'
 #' @rdname fixed_width
-#' @importFrom dplyr %>%
 #' @export
 fixed_width <- function (x, width, ...) {
   # TODO: .Deprecated("str_fixed_width")
@@ -12,7 +11,11 @@ fixed_width <- function (x, width, ...) {
 #' @export
 fixed_width.character <- function (x, width, justify = "left", ...) {
   x[is.na(x)] <- ""
-  x %>% encodeString(width = width, justify = justify, ...)
+  x %>% 
+    encodeString(width = width, justify = justify, ...) %>% 
+    # add line below to account for x.length > width
+    strtrim(width)
+  
 }
 
 #' @rdname fixed_width
