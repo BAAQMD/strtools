@@ -31,13 +31,13 @@ Improve readability for humans
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{integer}: Do nothing to integers
+\item \code{str_humanize(integer)}: Do nothing to integers
 
-\item \code{numeric}: Round real numbers to a given number of digits
+\item \code{str_humanize(numeric)}: Round real numbers to a given number of digits
 
-\item \code{tbl_df}: Apply \code{str_humanize(...)} to each column in turn
+\item \code{str_humanize(tbl_df)}: Apply \code{str_humanize(...)} to each column in turn
+
 }}
-
 \note{
 Per the help for \link{round}, the IEC 60559 ("round to the even digit") is used.
 See \code{help(round)} (look under the Details section).
