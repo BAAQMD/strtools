@@ -4,14 +4,14 @@
 \alias{format_range}
 \title{format_range}
 \usage{
-format_range(x, digits = NULL, sep = " to ", na.rm = TRUE)
+format_range(x, digits = NULL, sep = "–", na = "NA", na.rm = FALSE)
 }
 \arguments{
 \item{x}{(numeric) vector}
 
 \item{digits}{(numeric) passed to \code{\link[=format_digits]{format_digits()}}}
 
-\item{sep}{(character) separator, like " to " or "-"}
+\item{sep}{(character) separator, like " to " or "–"}
 
 \item{na.rm}{(logical)}
 }
